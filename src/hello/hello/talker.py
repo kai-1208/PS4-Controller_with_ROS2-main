@@ -4,9 +4,7 @@ from rclpy.node import Node
 from pyPS4Controller.controller import Controller
 import os
 import subprocess
-import time
 # os.environ['ROS_DOMAIN_ID'] = '2'
-id = 0
 
 class MyController(Controller, Node):
   def __init__(self, **kwargs):
@@ -46,28 +44,18 @@ class MyController(Controller, Node):
     # self.get_logger().info(f"ROS_DOMAIN_ID={id}")
 
   def on_right_arrow_press(self):
-    global id
-    id += 1
-    time.sleep(1)
-    self.change_id(id)
+    subprocess.run(
+        "export ROS_DOMAIN_ID=1 && ros2 run hello talker", shell=True)
 
   def on_up_arrow_press(self):
-    global id
-    id += 1
-    time.sleep(1)
-    self.change_id(id)
+    subprocess.run(
+        "export ROS_DOMAIN_ID=2 && ros2 run hello talker", shell=True)
   
   def on_left_arrow_press(self):
-    global id
-    id += 1
-    time.sleep(1)
-    self.change_id(id)
+    subprocess.run(
+        "export ROS_DOMAIN_ID=3 && ros2 run hello talker", shell=True)
     
-  def on_down_arrow_press(self):
-    global id
-    id += 1
-    time.sleep(1)
-    self.change_id(id)
+  # def on_down_arrow_press(self):
   
   # ジャンプ機構
   def on_L1_press(self):
