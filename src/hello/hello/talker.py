@@ -43,17 +43,26 @@ class MyController(Controller, Node):
   #   # self.get_logger().info(f"ROS_DOMAIN_ID={id}")
 
   def on_right_arrow_press(self):
-    self.get_logger().info("finish")
+    msg = MyString()
+    msg.data = "finish"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
     subprocess.run(
         "export ROS_DOMAIN_ID=1 && ros2 run hello talker", shell=True)
 
   def on_up_arrow_press(self):
-    self.get_logger().info("finish")
+    msg = MyString()
+    msg.data = "finish"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
     subprocess.run(
         "export ROS_DOMAIN_ID=2 && ros2 run hello talker", shell=True)
   
   def on_left_arrow_press(self):
-    self.get_logger().info("finish")
+    msg = MyString()
+    msg.data = "finish"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
     subprocess.run(
         "export ROS_DOMAIN_ID=3 && ros2 run hello talker", shell=True)
     
