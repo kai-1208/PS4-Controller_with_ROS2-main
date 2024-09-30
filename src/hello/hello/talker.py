@@ -46,7 +46,9 @@ class MyController(Controller, Node):
     msg = MyString()
     msg.data = "finish"
     self.publisher_.publish(msg)
-    self.get_logger().info("Published: " + msg.data)
+    msg = MyString()
+    msg.data = "nari"
+    self.publisher_.publish(msg)
     subprocess.run(
         "export ROS_DOMAIN_ID=1 && ros2 run hello talker", shell=True)
 
@@ -54,7 +56,9 @@ class MyController(Controller, Node):
     msg = MyString()
     msg.data = "finish"
     self.publisher_.publish(msg)
-    self.get_logger().info("Published: " + msg.data)
+    msg = MyString()
+    msg.data = "nari"
+    self.publisher_.publish(msg)
     subprocess.run(
         "export ROS_DOMAIN_ID=2 && ros2 run hello talker", shell=True)
   
@@ -62,7 +66,9 @@ class MyController(Controller, Node):
     msg = MyString()
     msg.data = "finish"
     self.publisher_.publish(msg)
-    self.get_logger().info("Published: " + msg.data)
+    msg = MyString()
+    msg.data = "nari"
+    self.publisher_.publish(msg)
     subprocess.run(
         "export ROS_DOMAIN_ID=3 && ros2 run hello talker", shell=True)
     
