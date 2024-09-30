@@ -31,11 +31,52 @@ class MyController(Controller, Node):
   # オムニ停止
   def on_x_press(self):
     msg = MyString()
-    msg.data = "cross"
+    msg.data = "crossON"
     self.publisher_.publish(msg)
     self.get_logger().info("Published: " + msg.data)
 
+  def on_x_release(self):
+    msg = MyString()
+    msg.data = "crossOFF"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_triangle_press(self):
+    msg = MyString()
+    msg.data = "triangleON"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
   
+  def on_triangle_release(self):
+    msg = MyString()
+    msg.data = "triangleOFF"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_circle_press(self):
+    msg = MyString()
+    msg.data = "circleON"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_circle_release(self):
+    msg = MyString()
+    msg.data = "circleOFF"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_square_press(self):
+    msg = MyString()
+    msg.data = "squareON"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_square_release(self):
+    msg = MyString()
+    msg.data = "squareOFF"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
   # id wo kimeru  
   # def change_id(self, domain_id):
   #   subprocess.run(
