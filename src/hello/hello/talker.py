@@ -16,18 +16,17 @@ class MyController(Controller, Node):
   def timer_callback(self):
     self.listen(timeout=5)
 
-  # id wo kimeru
-  def on_share_press(self):
-    subprocess.run(
-        "export ROS_DOMAIN_ID=1 && ros2 run hello talker", shell=True)
-
-  def on_options_press(self):
-    subprocess.run(
-        "export ROS_DOMAIN_ID=2 && ros2 run hello talker", shell=True)
-
   def on_playstation_button_press(self):
-    subprocess.run(
-        "export ROS_DOMAIN_ID=3 && ros2 run hello talker", shell=True)
+    msg = MyString()
+    msg.data = "psON"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
+
+  def on_playstation_button_release(self):
+    msg = MyString()
+    msg.data = "psOFF"
+    self.publisher_.publish(msg)
+    self.get_logger().info("Published: " + msg.data)
 
   # オムニ停止
   def on_x_press(self):
@@ -38,20 +37,23 @@ class MyController(Controller, Node):
 
   
   # id wo kimeru  
-  def change_id(self, domain_id):
-    subprocess.run(
-        f"export ROS_DOMAIN_ID={domain_id} && ros2 run hello talker", shell=True)
-    # self.get_logger().info(f"ROS_DOMAIN_ID={id}")
+  # def change_id(self, domain_id):
+  #   subprocess.run(
+  #       f"export ROS_DOMAIN_ID={domain_id} && ros2 run hello talker", shell=True)
+  #   # self.get_logger().info(f"ROS_DOMAIN_ID={id}")
 
   def on_right_arrow_press(self):
+    self.get_logger().info("finish")
     subprocess.run(
         "export ROS_DOMAIN_ID=1 && ros2 run hello talker", shell=True)
 
   def on_up_arrow_press(self):
+    self.get_logger().info("finish")
     subprocess.run(
         "export ROS_DOMAIN_ID=2 && ros2 run hello talker", shell=True)
   
   def on_left_arrow_press(self):
+    self.get_logger().info("finish")
     subprocess.run(
         "export ROS_DOMAIN_ID=3 && ros2 run hello talker", shell=True)
     
